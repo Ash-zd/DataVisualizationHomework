@@ -6,6 +6,10 @@
 export default {
   name: 'memory',
   mounted () {
+    let echarts = require('echarts')
+    // 基于准备好的dom，初始化echarts实例
+    let myChart = echarts.init(document.getElementById('memory'), 'light')
+    myChart.showLoading()
     function randomData () {
       value = myRandom(1560, 13384)
       now = new Date(+now + 3000)
@@ -35,6 +39,7 @@ export default {
         data.push(randomData())
       }
 
+      myChart.hideLoading()
       myChart.setOption({
         title: {
           text: '内存'
@@ -76,9 +81,6 @@ export default {
         }]
       })
     }, 3000)
-    let echarts = require('echarts')
-    // 基于准备好的dom，初始化echarts实例
-    let myChart = echarts.init(document.getElementById('memory'), 'light')
   }
 }
 </script>

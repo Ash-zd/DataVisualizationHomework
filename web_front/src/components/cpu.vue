@@ -8,6 +8,10 @@
 export default {
   name: 'cpu',
   mounted () {
+    let echarts = require('echarts')
+    // 基于准备好的dom，初始化echarts实例
+    let myChart = echarts.init(document.getElementById('cpu'), 'light')
+    myChart.showLoading()
     function randomData () {
       value = myRandom(5, 85)
       now = new Date(+now + 3000)
@@ -37,6 +41,7 @@ export default {
         data.push(randomData())
       }
 
+      myChart.hideLoading()
       myChart.setOption({
         title: {
           text: 'CPU'
@@ -78,9 +83,6 @@ export default {
         }]
       })
     }, 3000)
-    let echarts = require('echarts')
-    // 基于准备好的dom，初始化echarts实例
-    let myChart = echarts.init(document.getElementById('cpu'), 'light')
   }
 }
 </script>

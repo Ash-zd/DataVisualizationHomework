@@ -2,6 +2,7 @@
   <div class="navMenu">
     <h3>导航</h3>
     <el-menu
+      default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose">

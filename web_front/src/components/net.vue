@@ -12,6 +12,8 @@ export default {
     let echarts = require('echarts')
     let myChart1 = echarts.init(document.getElementById('download'), 'light')
     let myChart2 = echarts.init(document.getElementById('upload'), 'light')
+    myChart1.showLoading()
+    myChart2.showLoading()
     const option1 = {
       tooltip: {
         formatter: '{a} <br/>{b} : {c}%'
@@ -42,6 +44,8 @@ export default {
     setInterval(function () {
       option1.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0
       option2.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0
+      myChart1.hideLoading()
+      myChart2.hideLoading()
       myChart1.setOption(option1, true)
       myChart2.setOption(option2, true)
     }, 2000)

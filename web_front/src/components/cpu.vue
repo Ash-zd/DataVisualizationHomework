@@ -14,7 +14,7 @@ export default {
     myChart.showLoading()
     function randomData () {
       value = myRandom(5, 85)
-      now = new Date(+now + 3000)
+      now = new Date(+now + 2000)
       return {
         name: now.toString(),
         value: [
@@ -37,9 +37,7 @@ export default {
     } */
 
     setInterval(function () {
-      for (var i = 0; i < 2; i++) {
-        data.push(randomData())
-      }
+      data.push(randomData())
 
       myChart.hideLoading()
       myChart.setOption({
@@ -82,7 +80,7 @@ export default {
           areaStyle: {}
         }]
       })
-    }, 3000)
+    }, 2000)
   }
 }
 </script>

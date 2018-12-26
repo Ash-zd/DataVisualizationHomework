@@ -1,7 +1,7 @@
 <template>
 <div id="net">
   <div id="download"></div>
-  <div id="upload">This is upload</div>
+  <div id="upload"></div>
 </div>
 </template>
 

@@ -13,8 +13,22 @@ web_front/*.ntvs*
 web_front/*.njsproj
 web_front/*.sln
 
+web/node_modules/
+web/dist/
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+
+# Editor directories and files
+web/.idea
+web/.vscode
+web/*.suo
+web/*.ntvs*
+web/*.njsproj
+web/*.sln
 
 web_backend/venv/*
 web_backend/DataVisualizationHomework/settings.py
 web_backend/.idea/*
 web_backend/db.sqlite3
+

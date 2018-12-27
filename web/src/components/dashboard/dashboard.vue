@@ -11,7 +11,7 @@
             <v-line></v-line>
           </div>
           <div class="item four" @click="clickChart('4')" style="transform: translate(-28%,40.5%) scale(0.25)">
-            <p>Pass.</p>
+            <parallel></parallel>
           </div>
           <div class="item five active" @click="clickChart('5')" style="transform: translate(36%, 0) scale(1)">
             <point></point>
@@ -25,6 +25,7 @@ import column from 'src/components/column/column'
 import line from 'src/components/line/line'
 import multipleColumn from 'src/components/multipleColumn/multipleColumn'
 import point from 'src/components/point/point'
+import parallel from 'src/components/parallel/parallel'
 
 export default {
   data() {
@@ -70,7 +71,8 @@ export default {
     'column2': column,
     multipleColumn,
     point,
-    'v-line': line
+    'v-line': line,
+    parallel
   }
 }
 

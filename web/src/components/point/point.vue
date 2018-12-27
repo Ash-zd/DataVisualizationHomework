@@ -23,9 +23,9 @@ import china from 'echarts/map/js/china'
 import header from 'src/components/header/header'
 import filter from 'src/components/filter/filter'
 
-const USER_NAME = 'elastic'
-const PSW = 'elasticl@ethical.cn'
-const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW)
+const USER_NAME = 'elastic';
+const PSW = 'elasticl@ethical.cn';
+const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW);
 
 
 export default {
@@ -43,20 +43,20 @@ export default {
   },
   methods: {
     _init(options) {
-      this.myChart = echarts.init(document.querySelector('.point .main'), 'light')
-      this.myChart.setOption(options)
-      this.legendArr = options.series
+      this.myChart = echarts.init(document.querySelector('.point .main'), 'light');
+      this.myChart.setOption(options);
+      this.legendArr = options.series;
       this.legendArr.forEach((data) => {
         data.selected = true;
-      })
-      this.$root.charts.push(this.myChart)
+      });
+      this.$root.charts.push(this.myChart);
       window.addEventListener('resize', function() {
         this.myChart.resize()
       }.bind(this))
     },
     _getCityData() {
       axios.get('static/data/cityData.json').then((res) => {
-        this.geoCoordMap = res.data
+        this.geoCoordMap = res.data;
         this.$nextTick(() => {
           this._getMyChart()
         })
@@ -65,9 +65,9 @@ export default {
     convertData(data) {
       let res = [];
       for (let i = 0; i < 4; i++) {
-        let l = data.length
-        let x = parseInt(Math.random() * l)
-        let geoCoord = this.geoCoordMap[data[x].name]
+        let l = data.length;
+        let x = parseInt(Math.random() * l);
+        let geoCoord = this.geoCoordMap[data[x].name];
           // let geoCoord = this.geoCoordMap[data[i].name];
         if (geoCoord) {
           res.push({
@@ -195,7 +195,7 @@ export default {
             },
             data: this.convertData(res.data)
           }]
-        }
+        };
         this._init(options)
       });
     }

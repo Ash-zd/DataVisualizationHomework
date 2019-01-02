@@ -6,11 +6,13 @@
 
 <script>
 import dashboard from '@/components/dashboard'
+import myparallel from '@/components/parallel'
 
 export default {
   name: 'App',
   components: {
-    dashboard
+    dashboard,
+    myparallel
   },
   created () {}
 }

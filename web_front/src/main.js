@@ -11,6 +11,8 @@ import disk from '@/components/disk'
 import net from '@/components/net'
 import dashboard from '@/components/dashboard'
 import VueRouter from 'vue-router'
+import parallel from '@/components/parallel'
+import tree from '@/components/tree'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -33,6 +35,12 @@ const router = new VueRouter({
   }, {
     path: '/net',
     component: net
+  }, {
+    path: '/parallel',
+    component: parallel
+  }, {
+    path: '/tree',
+    component: tree
   }],
   linkActiveClass: 'active'
 })

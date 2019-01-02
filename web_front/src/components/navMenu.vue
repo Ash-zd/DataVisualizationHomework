@@ -30,6 +30,18 @@
           <span slot="title">网络</span>
         </el-menu-item>
       </router-link>
+      <router-link to="/parallel">
+        <el-menu-item index="5">
+          <i class="el-icon-sort"></i>
+          <span slot="title">parallel</span>
+        </el-menu-item>
+      </router-link>
+      <router-link to="/tree">
+        <el-menu-item index="5">
+          <i class="el-icon-sort"></i>
+          <span slot="title">tree</span>
+        </el-menu-item>
+      </router-link>
     </el-menu>
   </div>
 </template>

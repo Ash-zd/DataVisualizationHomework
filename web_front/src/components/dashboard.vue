@@ -20,12 +20,14 @@
 import myHeader from '@/components/header'
 import navMenu from '@/components/navMenu'
 import cpu from '@/components/cpu'
+import tree from '@/components/tree'
 export default {
   name: 'dashboard',
   components: {
     cpu,
     myHeader,
-    navMenu
+    navMenu,
+    tree
   }
 }
 </script>

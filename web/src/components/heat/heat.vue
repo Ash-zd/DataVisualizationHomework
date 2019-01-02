@@ -9,14 +9,14 @@
 <script>
 import axios from 'axios'
 import echarts from 'echarts'
-import china from 'echarts/map/js/china'
+// import china from 'echarts/map/js/china'
 import header from 'src/components/header/header'
 
 export default {
-  created() {
+  created () {
     this._getCityData()
   },
-  data() {
+  data () {
     return {
       legendArr: [],
       color: this.$store.state.color,
@@ -26,34 +26,34 @@ export default {
     }
   },
   methods: {
-    _init(options) {
+    myinit (options) {
       this.myChart = echarts.init(document.querySelector('.heat .main'))
       this.myChart.setOption(options)
       this.legendArr = options.series
       this.legendArr.forEach((data) => {
-        data.selected = true;
+        data.selected = true
       })
     },
-    _getCityData() {
+    _getCityData () {
       axios.get('static/data/cityData.json').then((res) => {
         this.geoCoordMap = res.data
       })
     },
-    convertData(data) {
-      let res = [];
+    convertData (data) {
+      let res = []
       for (let i = 0; i < data.length; i++) {
-        let geoCoord = this.geoCoordMap[data[i].name];
+        let geoCoord = this.geoCoordMap[data[i].name]
         if (geoCoord) {
-          res.push(geoCoord.concat(data[i].value));
+          res.push(geoCoord.concat(data[i].value))
         }
       }
-      return res;
+      return res
     }
   },
   components: {
     'v-header': header
   },
-  mounted() {
+  mounted () {
     axios.get('static/data/heat/testData.json').then((res) => {
       let options = {
         title: {
@@ -101,8 +101,8 @@ export default {
         }]
       }
       window.onresize = this.myChart.resize
-      this._init(options)
-    });
+      this.myinit(options)
+    })
   }
 }
 

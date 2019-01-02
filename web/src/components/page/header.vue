@@ -3,9 +3,9 @@
 </template>
 
 <script>
-  export default {
-    name: "pageHeader"
-  }
+export default {
+  name: 'pageHeader'
+}
 </script>
 
 <style scoped>

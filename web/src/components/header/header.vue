@@ -15,23 +15,22 @@
 export default {
   props: {
     legendArr: {
-      type: Array,
-      default: []
+      type: Array
     },
     myChart: Object,
     name: String
   },
-  created() {
-    this._init()
+  created () {
+    this.myinit()
   },
-  data() {
+  data () {
     return {
       styleArr: [],
       color: this.$store.state.color
     }
   },
   methods: {
-    _init() {
+    myinit () {
       this.color.forEach((color) => {
         this.styleArr.push({
           background: color,
@@ -39,19 +38,19 @@ export default {
         })
       })
     },
-    highlight(index) {
+    highlight (index) {
       this.myChart.dispatchAction({
         type: 'highlight',
         seriesIndex: index
-      });
+      })
     },
-    donwplay(index) {
+    donwplay (index) {
       this.myChart.dispatchAction({
         type: 'downplay',
         seriesIndex: index
       })
     },
-    legendToggle(legend) {
+    legendToggle (legend) {
       legend.selected = !legend.selected
       this.myChart.dispatchAction({
         type: 'legendToggleSelect',
@@ -59,7 +58,7 @@ export default {
       })
       this.changeStyle()
     },
-    changeStyle() {
+    changeStyle () {
       this.legendArr.forEach((data, index) => {
         if (data.selected) {
           this.styleArr[index].background = this.color[index]

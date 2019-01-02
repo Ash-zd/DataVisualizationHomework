@@ -23,74 +23,78 @@ import china from 'echarts/map/js/china'
 import header from 'src/components/header/header'
 import filter from 'src/components/filter/filter'
 
-const USER_NAME = 'elastic';
-const PSW = 'elasticl@ethical.cn';
-const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW);
-
-
 export default {
-  created() {
+  created () {
     this._getCityData()
   },
-  data() {
+  data () {
     return {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
       geoCoordMap: {},
-      name: '散点图'
+      name: '访问量地图'
     }
   },
   methods: {
-    _init(options) {
-      this.myChart = echarts.init(document.querySelector('.point .main'), 'light');
-      this.myChart.setOption(options);
-      this.legendArr = options.series;
+    myinit (options) {
+      this.myChart = echarts.init(document.querySelector('.point .main'), 'light')
+      this.myChart.setOption(options)
+      this.legendArr = options.series
       this.legendArr.forEach((data) => {
-        data.selected = true;
-      });
-      this.$root.charts.push(this.myChart);
-      window.addEventListener('resize', function() {
+        data.selected = true
+      })
+      this.$root.charts.push(this.myChart)
+      window.addEventListener('resize', function () {
         this.myChart.resize()
       }.bind(this))
     },
-    _getCityData() {
+    _getCityData () {
       axios.get('static/data/cityData.json').then((res) => {
-        this.geoCoordMap = res.data;
+        this.geoCoordMap = res.data
         this.$nextTick(() => {
           this._getMyChart()
         })
       })
     },
-    convertData(data) {
+    convertData (data) {
       let res = [];
-      for (let i = 0; i < 4; i++) {
-        let l = data.length;
-        let x = parseInt(Math.random() * l);
-        let geoCoord = this.geoCoordMap[data[x].name];
-          // let geoCoord = this.geoCoordMap[data[i].name];
+      for (let i = 0; i < data.length; i++) {
+        let geoCoord = this.geoCoordMap[data[i].name]
+        // let geoCoord = this.geoCoordMap[data[i].name];
+        if (geoCoord) {
+          res.push({
+            name: data[i].name,
+            // value: geoCoord.concat(Math.random() * 200)
+            value: geoCoord.concat(data[i].value)
+          })
+        }
+      }
+      /* for (let i = 0; i < 4; i++) {
+        let l = data.length
+        let x = parseInt(Math.random() * l)
+        let geoCoord = this.geoCoordMap[data[x].name]
+        // let geoCoord = this.geoCoordMap[data[i].name];
         if (geoCoord) {
           res.push({
             name: data[x].name,
-            // name: data[x].name,
-            value: geoCoord.concat(Math.random() * 200)
-              // value: geoCoord.concat(data[i].value)
-          });
+            // value: geoCoord.concat(Math.random() * 200)
+            value: geoCoord.concat(data[x].value)
+          })
         }
-      }
-      return res;
+      } */
+      return res
     },
-    _getMyChart() {
+    _getMyChart () {
       axios.get('static/data/point/testData.json').then((res) => {
         let options = {
-          // backgroundColor: '#404a59',
           title: {
             show: false
           },
           tooltip: {
             trigger: 'item',
-            formatter: function(params) {
-              return params.name + ' : ' + params.value[2];
+            formatter: function (params) {
+              return params.name + ' : ' + params.value[2]
             }
           },
           legend: {
@@ -98,9 +102,9 @@ export default {
           },
           visualMap: {
             min: 0,
-            max: 200,
-            bottom: 50,
-            splitNumber: 5,
+            max: 1000,
+            bottom: 0,
+            splitNumber: 10,
             inRange: {
               color: ['#255B78', '#2A7484', '#2F9696', '#3BBCB0', '#51D4EB']
             },
@@ -132,8 +136,8 @@ export default {
             name: '标签1',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
+            symbolSize: function (val) {
+              return val[2] / 6
             },
             label: {
               normal: {
@@ -150,12 +154,12 @@ export default {
               }
             },
             data: this.convertData(res.data)
-          }, {
+          }/* , {
             name: '标签2',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
+            symbolSize: function (val) {
+              return val[2] / 6
             },
             label: {
               normal: {
@@ -176,8 +180,8 @@ export default {
             name: '标签3',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: function(val) {
-              return val[2] / 6;
+            symbolSize: function (val) {
+              return val[2] / 6
             },
             label: {
               normal: {
@@ -194,10 +198,10 @@ export default {
               }
             },
             data: this.convertData(res.data)
-          }]
-        };
-        this._init(options)
-      });
+          } */]
+        }
+        this.myinit(options)
+      })
     }
   },
   components: {

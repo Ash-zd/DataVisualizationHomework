@@ -1,14 +1,13 @@
 <!-- 折线图 -->
 <style lang="stylus" scoped>
-.multipleColumn
-  height 1000px
-  background-size 100% 100%
-  .main
-    width 100%
-    height calc(100% - 100px)
-    margin-top -15px
+  .multipleColumn
+    height 1000px
+    background-size 100% 100%
+    .main
+      width 100%
+      height calc(100% - 100px)
+      margin-top -15px
 </style>
-
 
 <template>
 <div class="multipleColumn">
@@ -21,11 +20,11 @@
 
 <script>
 import echarts from 'echarts'
-import header from 'components/header/header'
-import filter from 'components/filter/filter'
+import header from 'src/components/header/header'
+import filter from 'src/components/filter/filter'
 
 export default {
-  data() {
+  data () {
     return {
       legendArr: [],
       color: this.$store.state.color,
@@ -35,13 +34,13 @@ export default {
     }
   },
   methods: {
-    _init() {
+    myinit () {
       this.legendArr = this.myChart.getOption().series
       this.legendArr.forEach((data) => {
-        data.selected = true;
+        data.selected = true
       })
       this.$root.charts.push(this.myChart)
-      window.addEventListener('resize', function() {
+      window.addEventListener('resize', function () {
         this.myChart.resize()
       }.bind(this))
     }
@@ -50,7 +49,7 @@ export default {
     'v-header': header,
     'v-filter': filter
   },
-  mounted() {
+  mounted () {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.querySelector('.multipleColumn .main'), 'light')
     this.myChart.setOption({
@@ -157,8 +156,8 @@ export default {
         barWidth: 16,
         barGap: 0
       }]
-    });
-    this._init()
+    })
+    this.myinit()
   }
 }
 

@@ -24,22 +24,22 @@ import header from 'src/components/header/header'
 import filter from 'src/components/filter/filter'
 
 export default {
-  data() {
+  data () {
     return {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: '折线图'
+      name: '访问折线图'
     }
   },
   methods: {
-    _init() {
+    myinit () {
       this.legendArr = this.myChart.getOption().series
       this.legendArr.forEach((data) => {
-        data.selected = true;
+        data.selected = true
       })
       this.$root.charts.push(this.myChart)
-      window.addEventListener('resize', function() {
+      window.addEventListener('resize', function () {
         this.myChart.resize()
       }.bind(this))
     }
@@ -48,9 +48,9 @@ export default {
     'v-header': header,
     'v-filter': filter
   },
-  mounted() {
+  mounted () {
     // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.querySelector('.line .main'), 'light');
+    this.myChart = echarts.init(document.querySelector('.line .main'), 'light')
     this.myChart.setOption({
       title: {
         show: false
@@ -67,7 +67,7 @@ export default {
       color: this.color,
       calculable: true,
       xAxis: [{
-        name: '产品',
+        name: '日期',
         type: 'category',
         axisLine: {
           show: false
@@ -83,7 +83,7 @@ export default {
             color: 'white'
           }
         },
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        data: ['2018-12-20', '2018-12-21', '2018-12-22', '2018-12-23', '2018-12-24', '2018-12-25', '2018-12-26']
       }],
       yAxis: [{
         axisLine: {
@@ -106,40 +106,40 @@ export default {
             fontSize: 14
           }
         },
-        name: '数量',
+        name: '访问量',
         type: 'value',
         nameTextStyle: {
           color: 'rgba(255, 255, 255, 0.69)'
         }
       }],
       series: [{
-        name: '标签1',
+        name: '站点1',
         type: 'line',
         stack: '总量',
         data: [120, 132, 101, 134, 90, 230, 210]
       }, {
-        name: '标签2',
+        name: '站点2',
         type: 'line',
         stack: '总量',
         data: [220, 182, 191, 234, 290, 330, 310]
       }, {
-        name: '标签3',
+        name: '站点3',
         type: 'line',
         stack: '总量',
         data: [150, 232, 201, 154, 190, 330, 410]
       }, {
-        name: '标签4',
+        name: '站点4',
         type: 'line',
         stack: '总量',
         data: [320, 332, 301, 334, 390, 330, 320]
       }, {
-        name: '标签5',
+        name: '站点5',
         type: 'line',
         stack: '总量',
         data: [820, 932, 901, 934, 1290, 1330, 1320]
       }]
-    });
-    this._init()
+    })
+    this.myinit()
   }
 }
 

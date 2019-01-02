@@ -18,15 +18,15 @@
   .dashboard
     position relative
     width 100%
-    height 100%
+    height 98%
     margin:0px;
     padding:0px;
     padding-top 0%
     background-size 100% 100%
   .flex-container.column
     position relative
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     margin:  0 auto 5px auto;
     box-sizing: content-box;

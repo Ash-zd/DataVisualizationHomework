@@ -8,9 +8,14 @@
       text-align center
     .mainApp
       position absolute
-      height 88%
-      width 98%
+      height 97%
+      width 97%
       background-color #545c64
+  .content
+    position absolute
+    height 100%
+    width 100%
+    background-color #545c64
 </style>
 
 <template>
@@ -51,7 +56,7 @@
         </el-row>
       </el-menu>
     </div>
-    <div class="container">
+    <div class="content">
       <el-container>
         <el-main>
           <div class="mainApp">

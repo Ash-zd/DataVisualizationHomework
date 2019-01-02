@@ -4,7 +4,7 @@
     background-size 100% 100%
     .main
       width 100%
-      height calc(85% - 100px)
+      height calc(80% - 100px)
       margin-top -15px
 </style>
 

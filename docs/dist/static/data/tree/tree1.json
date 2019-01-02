@@ -1,0 +1,147 @@
+{
+  "name": "systemd",
+  "children": [
+    {
+      "name": "lvmetad"
+    },
+    {
+      "name": "systemd-resolved"
+    },
+    {
+      "name": "systemd-timesyncd"
+    },
+    {
+      "name": "systemd-journald"
+    },
+    {
+      "name": "dbus-daemon"
+    },
+    {
+      "name": "rsyslogd"
+    },
+    {
+      "name": "cron"
+    },
+    {
+      "name": "accounts-daemon"
+    },
+    {
+      "name": "lxcfs"
+    },
+    {
+      "name": "atd"
+    },
+    {
+      "name": "systemd-logind"
+    },
+    {
+      "name": "php-fpm7.2"
+    },
+    {
+      "name": "polkitd"
+    },
+    {
+      "name": "uwsgi"
+    },
+    {
+      "name": "agetty",
+      "children": [
+        {
+          "name": "agetty"
+        }
+      ]
+    },
+    {
+      "name": "sgagent"
+    },
+    {
+      "name": "postgres"
+    },
+    {
+      "name": "mysqld"
+    },
+    {
+      "name": "sshd"
+    },
+    {
+      "name": "networkd-dispat"
+    },
+    {
+      "name": "nginx"
+    },
+    {
+      "name": "systemd-udevd"
+    },
+    {
+      "name": "systemd"
+    },
+    {
+      "name": "frps"
+    },
+    {
+      "name": "YDService"
+    },
+    {
+      "name": "YDLive"
+    },
+    {
+      "name": "uuidd"
+    },
+    {
+      "name": "barad_agent",
+      "children": [
+        {
+          "name": "barad_agent"
+        },
+        {
+          "name": "barad_agent"
+        }
+      ]
+    },
+    {
+      "name": "(sd-pam)"
+    },
+    {
+      "name": "nginx"
+    },
+    {
+      "name": "sshd",
+      "children": [
+        {
+          "name": "sshd"
+        }
+      ]
+    },
+    {
+      "name": "zsh"
+    },
+    {
+      "name": "python"
+    },
+    {
+      "name": "postgres",
+      "children": [
+        {
+          "name": "postgres"
+        },
+        {
+          "name": "postgres"
+        },
+        {
+          "name": "postgres"
+        },
+        {
+          "name": "postgres"
+        }
+      ]
+    },
+    {
+      "name": "php-fpm7.2",
+      "children": [
+        {
+          "name": "php-fpm7.2"
+        }
+      ]
+    }
+  ]
+}

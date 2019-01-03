@@ -28,7 +28,6 @@ web/*.njsproj
 web/*.sln
 
 web_backend/venv/*
-web_backend/DataVisualizationHomework/settings.py
 web_backend/.idea/*
 web_backend/db.sqlite3
 

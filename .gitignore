@@ -27,7 +27,6 @@ web/*.ntvs*
 web/*.njsproj
 web/*.sln
 
-web_backend/venv/*
-web_backend/.idea/*
-web_backend/db.sqlite3
-
+web_backend/*/venv/*
+web_backend/*/.idea/*
+web_backend/*/db.sqlite3

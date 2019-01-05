@@ -1,60 +1,29 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .page
-    background-color #545c64
+    background-color #003264
     position absolute
     height 100%
     width 100%
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     .header
       text-align center
     .mainApp
       position absolute
       height 97%
       width 97%
-      background-color #545c64
   .content
+    // background-color #545c64
+    background-color #003964
     position absolute
     height 100%
     width 100%
-    background-color #545c64
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 </style>
 
 <template>
   <div class="page">
     <div class="header">
-      <el-menu
-        class="el-menu-demo"
-        router=true
-        mode="horizontal"
-        background-color="#344152"
-        text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-row type="flex" class="row-bg" justify="space-between">
-          <el-col :span="24">
-            <el-menu-item index="dashboard">资源监视器 v1.0</el-menu-item>
-          </el-col>
-          <el-col :span="24" offset="20" class="">
-            <el-menu-item index="#">
-              <el-dropdown trigger="click" class="el-dropdown-link" placement="bottom-start">
-                <span style="color: #fff;">登录</span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-form :label-position='left' label-width="60px">
-                    <el-form-item label="账号:">
-                      <el-input type="text" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码:">
-                      <el-input type="password" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary">提交</el-button>
-                      <el-button>重置</el-button>
-                    </el-form-item>
-                  </el-form>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </el-menu-item>
-          </el-col>
-        </el-row>
-      </el-menu>
+      <v-header></v-header>
     </div>
     <div class="content">
       <el-container>
@@ -69,6 +38,7 @@
 </template>
 
 <script>
+import header from 'src/components/page/header'
 
 export default {
   data () {
@@ -76,7 +46,10 @@ export default {
       seller: {}
     }
   },
-  created () {}
+  created () {},
+  components: {
+    'v-header': header
+  }
 }
 
 </script>

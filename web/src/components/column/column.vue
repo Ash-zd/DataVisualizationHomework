@@ -13,7 +13,6 @@
 <template>
 <div class="columnChart">
   <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-  <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>
   <div class="main"></div>
 </div>
 
@@ -23,6 +22,7 @@
 import echarts from 'echarts'
 import header from 'src/components/header/header'
 import filter from 'src/components/filter/filter'
+import axios from 'axios'
 
 export default {
   data () {
@@ -30,16 +30,18 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: '柱状图'
+      name: 'CPU使用率',
+      option: {},
+      cpuData: []
     }
   },
   methods: {
     myinit () {
-      this.legendArr = this.myChart.getOption().series
+      this.legendArr = this.myChart.getOption().series;
       this.legendArr.forEach((data) => {
         data.selected = true
-      })
-      this.$root.charts.push(this.myChart)
+      });
+      this.$root.charts.push(this.myChart);
       window.addEventListener('resize', function () {
         this.myChart.resize()
       }.bind(this))
@@ -50,107 +52,95 @@ export default {
     'v-filter': filter
   },
   mounted () {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.querySelector('.columnChart .main'), 'light')
-    this.myChart.setOption({
-      title: {
-        show: false
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        show: false
-      },
-      toolbox: {
-        show: false
-      },
-      color: this.color,
-      calculable: true,
-      xAxis: [{
-        name: '硬盘',
-        type: 'category',
-        axisLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white'
-          }
-        },
-        data: ['硬盘1', '硬盘2']
-      }],
-      yAxis: [{
-        axisLine: {
-          show: false
-        },
-        nameLocation: 'end',
-        nameGap: 20,
-        nameRotate: 0,
-        axisTick: {
-          show: false
-        },
-        splitLine: {
-          lineStyle: {
-            color: ['rgba(230, 230, 230, 0.2)']
-          }
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white',
-            fontSize: 14
-          }
-        },
-        name: '数量',
-        type: 'value',
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
-        }
-      }],
-      series: [{
-        name: '标签1',
-        type: 'bar',
-        data: [2.0, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签2',
-        type: 'bar',
-        data: [2.6, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签3',
-        type: 'bar',
-        data: [2.0, 6.4],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签4',
-        type: 'bar',
-        data: [4.0, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签5',
-        type: 'bar',
-        data: [5.6, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签6',
-        type: 'bar',
-        data: [2.0, 3.4],
-        barWidth: 16,
-        barGap: 0
-      }]
-    })
+    setInterval(function () {
+      axios.get("http://localhost:8000/api/cpu/percent/").then((res) => {
+        this.myChart = echarts.init(document.querySelector('.columnChart .main'), 'light');
+        this.myChart.setOption({
+          title: {
+            show: true
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            show: true,
+            data: ['CPU'],
+            textStyle: {
+              color: 'white'
+            }
+          },
+          color: this.color,
+          calculable: true,
+          xAxis: [{
+            name: 'CPU',
+            type: 'category',
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            nameTextStyle: {
+              color: 'rgba(255, 255, 255, 0.69)'
+            },
+            axisLabel: {
+              textStyle: {
+                color: 'white'
+              }
+            },
+            data: ['CPU1', 'CPU2', 'CPU3', 'CPU4', 'CPU5', 'CPU6', 'CPU7', 'CPU8']
+          }],
+          yAxis: [{
+            axisLine: {
+              show: false
+            },
+            nameLocation: 'end',
+            nameGap: 20,
+            nameRotate: 0,
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              lineStyle: {
+                color: ['rgba(230, 230, 230, 0.2)']
+              }
+            },
+            axisLabel: {
+              textStyle: {
+                color: 'white',
+                fontSize: 14
+              },
+              formatter: '{value} %'
+            },
+            name: '使用率',
+            type: 'value',
+            nameTextStyle: {
+              color: 'rgba(255, 255, 255, 0.69)'
+            },
+            max: 100
+          }],
+          series: [{
+            name: 'CPU',
+            type: 'bar',
+            data: res.data['cpu_percent'],
+            barWidth: 50,
+            barGap: 0,
+            itemStyle: {
+              normal: {
+                label: {
+                  show: true,
+                  position: 'top',
+                  textStyle: {
+                    color: 'white',
+                    fontSize: 16
+                  }
+                }
+              }
+            }
+          }]
+        });
+      });
+    }, 5000);
     this.myinit()
   }
 }

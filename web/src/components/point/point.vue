@@ -86,7 +86,10 @@ export default {
       return res
     },
     _getMyChart () {
-      axios.get('static/data/point/testData.json').then((res) => {
+      // axios.get('static/data/point/testData.json').then((res) => {
+      axios.get('http://localhost:8000/api/net/analyze/').then((res) => {
+        // console.log(res.data['resp'])
+        // console.log(this.convertData(res.data['resp']))
         let options = {
           title: {
             show: false
@@ -153,7 +156,8 @@ export default {
                 borderWidth: 1
               }
             },
-            data: this.convertData(res.data)
+            data: this.convertData(res.data['resp'])
+            // data: res.data
           }/* , {
             name: '标签2',
             type: 'scatter',

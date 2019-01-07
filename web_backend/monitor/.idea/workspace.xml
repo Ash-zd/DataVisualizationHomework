@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4011df4d-f213-41df-a6e4-af0a8830f4fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../web/static/data/line/line.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../web/src/components/bar/bar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/src/components/column/column.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/components/column/column.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/src/components/line/line.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/components/line/line.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../web/src/components/page/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/components/login/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../web/src/components/login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/components/login/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/src/components/page/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/components/page/header.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/monitor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/monitor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../web/static/data/cityData.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/static/data/cityData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/views.py" afterDir="false" />
     </list>
@@ -57,11 +54,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            <state relative-caret-position="193">
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
               <folding>
                 <element signature="e#631#672#0" expanded="true" />
               </folding>
@@ -69,23 +66,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1482">
-              <caret line="78" column="21" lean-forward="true" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+            <state relative-caret-position="592">
+              <caret line="152" column="27" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="27" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/logs/access.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="130" column="12" lean-forward="true" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -112,7 +100,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="482" />
+    <option name="x" value="480" />
     <option name="y" value="-15" />
     <option name="width" value="1400" />
     <option name="height" value="875" />
@@ -217,12 +205,14 @@
       <workItem from="1546584872647" duration="5036000" />
       <workItem from="1546602064385" duration="3215000" />
       <workItem from="1546612829473" duration="614000" />
-      <workItem from="1546660615641" duration="8214000" />
+      <workItem from="1546660615641" duration="13432000" />
+      <workItem from="1546867607784" duration="3670000" />
+      <workItem from="1546872572260" duration="4278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28786000" />
+    <option name="totallyTimeSpent" value="41952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -237,12 +227,12 @@
     <frame x="71" y="-7" width="1472" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2298444" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23691654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32825485" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32825485" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -271,35 +261,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/logs/error.log.2.gz">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/logs/access.log.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/logs/error.log.2.gz" />
+    <entry file="file://$PROJECT_DIR$/static/logs/access.log.1" />
     <entry file="file://$PROJECT_DIR$/static/logs/access.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="130" column="12" lean-forward="true" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="e#631#672#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="279">
+          <caret line="71" column="47" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="78" column="21" lean-forward="true" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+        <state relative-caret-position="592">
+          <caret line="152" column="27" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="27" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+          <folding>
+            <element signature="e#631#672#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -11,7 +11,6 @@
 <template>
   <div class="tree">
     <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-    <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>
     <div class="main"></div>
   </div>
 </template>
@@ -28,6 +27,18 @@ export default {
     'v-header': header,
     'v-filter': filter
   },
+  methods: {
+    myinit () {
+      this.legendArr = this.myChart.getOption().series
+      this.legendArr.forEach((data) => {
+        data.selected = true
+      })
+      this.$root.charts.push(this.myChart)
+      window.addEventListener('resize', function () {
+        this.myChart.resize()
+      }.bind(this))
+    }
+  },
   data () {
     return {
       legendArr: [],
@@ -38,114 +49,64 @@ export default {
     }
   },
   mounted () {
-    let myChart = echarts.init(document.querySelector('.tree .main'), 'light')
     axios.get('static/data/tree/tree1.json').then((res) => {
       var data1;
-      var data2;
       data1 = res.data;
-      axios.get('static/data/tree/tree2.json').then((res) => {
-        data2 = res.data;
-        console.log(data1)
-        console.log(data2)
-        myChart.setOption({
-          tooltip: {
-            trigger: 'item',
-            triggerOn: 'mousemove'
-          },
-          legend: {
-            top: '2%',
-            left: '3%',
-            orient: 'vertical',
-            data: [{
-              name: 'tree1',
-              icon: 'rectangle'
-            }, {
-              name: 'tree2',
-              icon: 'rectangle'
-            }],
-            borderColor: '#c23531',
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          color: this.color,
-          series: [
-            {
-              type: 'tree',
-              name: 'tree1',
-              data: [data1],
-              top: '5%',
-              left: '15%',
-              bottom: '2%',
-              right: '60%',
-              symbolSize: 7,
-              label: {
-                normal: {
-                  position: 'left',
-                  verticalAlign: 'middle',
-                  align: 'right',
-                  textStyle: {
-                    color: '#fff'
-                  }
+      this.myChart = echarts.init(document.querySelector('.tree .main'), 'light')
+      this.myChart.setOption({
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove'
+        },
+        legend: {
+          top: '2%',
+          left: '3%',
+          orient: 'vertical',
+          data: [{
+            name: '进程树'
+          }],
+          borderColor: '#c23531',
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        color: this.color,
+        series: [
+          {
+            type: 'tree',
+            name: '进程树',
+            data: [data1],
+            symbolSize: 7,
+            label: {
+              normal: {
+                position: 'left',
+                verticalAlign: 'middle',
+                align: 'right',
+                textStyle: {
+                  color: '#fff'
                 }
-              },
-              leaves: {
-                label: {
-                  normal: {
-                    position: 'right',
-                    verticalAlign: 'middle',
-                    align: 'left',
-                    textStyle: {
-                      color: '#fff'
-                    }
-                  }
-                }
-              },
-              expandAndCollapse: true,
-
-              animationDuration: 550,
-              animationDurationUpdate: 750
-
+              }
             },
-            {
-              type: 'tree',
-              name: 'tree2',
-              data: [data2],
-              top: '20%',
-              left: '60%',
-              bottom: '22%',
-              right: '18%',
-              symbolSize: 7,
+            leaves: {
               label: {
                 normal: {
-                  position: 'left',
+                  position: 'right',
                   verticalAlign: 'middle',
-                  align: 'right',
+                  align: 'left',
                   textStyle: {
                     color: '#fff'
                   }
                 }
-              },
-              leaves: {
-                label: {
-                  normal: {
-                    position: 'right',
-                    verticalAlign: 'middle',
-                    align: 'left',
-                    textStyle: {
-                      color: '#fff'
-                    }
-                  }
-                }
-              },
-              expandAndCollapse: true,
-              animationDuration: 550,
-              animationDurationUpdate: 750
-            }
-          ]
-        })
+              }
+            },
+            expandAndCollapse: true,
+            animationDuration: 550,
+            animationDurationUpdate: 750
+          }
+        ]
       })
-    })
+    });
+    this.myinit()
   }
 }
 </script>

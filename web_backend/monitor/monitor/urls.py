@@ -26,8 +26,12 @@ urlpatterns = [
     path('api/admin/auth/', obtain_jwt_token),
     path('api/admin/verify/', verify_jwt_token),
     path('api/admin/refresh/', refresh_jwt_token),
-    path('api/cpu/percent/', views.cpu_percent),
-    path('api/net/io/', views.net_io),
+    path('api/cpu/info/', views.cpu_info),
+    path('api/memory/info/', views.memory_info),
+    path('api/cpumemory/info/', views.cpu_memory_info),
+    path('api/netdisk/io/', views.net_disk_io),
     path('api/net/analyze/', views.net_analyze),
+    path('api/battery/info/', views.battery_percent),
+    path('api/log/analyze/', views.log_analyze),
 
 ]

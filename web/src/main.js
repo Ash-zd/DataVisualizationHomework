@@ -11,22 +11,31 @@ import dashboard from 'components/dashboard/dashboard'
 import multipleColumn from 'components/multipleColumn/multipleColumn'
 import tree from 'components/tree/tree'
 import login from 'components/login/login'
-
+import bar from 'components/bar/bar'
 import ElementUI from 'element-ui'
 import parallel from './components/parallel/parallel'
 
-Vue.use(ElementUI)
-
-Vue.use(VueRouter)
-Vue.use(Vuex)
+Vue.use(ElementUI);
+Vue.use(VueRouter);
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     count: 0,
     color: ['#325B69', '#698570', '#AE5548', '#6D9EA8', '#9CC2B0', '#C98769'],
-    baseUrl: "http://localhost:8000/api/"
+    baseUrl: "http://localhost:8000",
+    isLogin: 0
+  },
+  mutations: {
+    login (state) {
+      state.isLogin = 1;
+    },
+    logout (state) {
+      state.isLogin = 0;
+    }
   }
-})
+});
+
 const router = new VueRouter({
   routes: [{
     path: '/column',
@@ -55,9 +64,12 @@ const router = new VueRouter({
   }, {
     path: '/login',
     component: login
+  }, {
+    path: '/bar',
+    component: bar
   }],
   linkActiveClass: 'active'
-})
+});
 new Vue({
   router,
   store,

@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "login",
     data() {
@@ -68,9 +69,21 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            axios.post('http://localhost:8000/api/admin/auth/', {
+              username: this.loginForm.username,
+              password: this.loginForm.password
+            }).then((res) => {
+              if (res.status === 200) {
+                localStorage.setItem('token', res.data['token']);
+                this.$store.commit("login");
+                console.log(this.$store.state.isLogin);
+                this.$router.push("dashboard")
+              }
+            }).catch(() => {
+              this.$message.error('账号/密码错误')
+            })
           } else {
-            console.log('error submit!');
+            this.$message.error('格式错误');
             return false;
           }
         });

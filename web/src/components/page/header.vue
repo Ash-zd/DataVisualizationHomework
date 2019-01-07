@@ -10,17 +10,21 @@
     text-color="#fff"
     active-text-color="#fff">
     <el-row type="flex" class="row-bg" justify="space-between">
+      <el-row type="flex" justify="start">
+        <el-menu-item index="#" @click="goToDashboard">资源监视器 v1.0</el-menu-item>
+      </el-row>
       <el-row type="flex" justify="center">
-        <el-menu-item index="dashboard">资源监视器 v1.0</el-menu-item>
+        <el-menu-item index="#" @click="getBattery">获取电量信息</el-menu-item>
       </el-row>
       <el-row type="flex" justify="end">
-        <el-menu-item index="login">登录</el-menu-item>
+        <el-menu-item index="#" @click="goToLogin">登录</el-menu-item>
       </el-row>
     </el-row>
   </el-menu>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'pageHeader',
   data() {
@@ -64,6 +68,20 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    getBattery() {
+      axios.get(this.$store.state.baseUrl + '/api/battery/info/').then((res) => {
+        this.$message({
+          message: '剩余电量：' + res.data['percent'] + '%',
+          type: 'success'
+        })
+      })
+    },
+    goToDashboard() {
+      this.$router.push("dashboard");
+    },
+    goToLogin() {
+      this.$router.push("login");
     }
   }
 }

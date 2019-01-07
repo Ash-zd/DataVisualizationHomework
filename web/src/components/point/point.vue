@@ -11,7 +11,7 @@
 <template lang="html">
 <div class="point">
   <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-  <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>
+  <!--<v-filter :myChart="myChart" v-if="myChart._dom"></v-filter>-->
   <div class="main"></div>
 </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       color: this.$store.state.color,
       myChart: {},
       geoCoordMap: {},
-      name: '访问量地图'
+      name: '访问来源'
     }
   },
   methods: {
@@ -86,8 +86,8 @@ export default {
       return res
     },
     _getMyChart () {
-      // axios.get('static/data/point/testData.json').then((res) => {
-      axios.get('http://localhost:8000/api/net/analyze/').then((res) => {
+      axios.get('static/data/point/testData.json').then((res) => {
+      // axios.get('http://localhost:8000/api/net/analyze/').then((res) => {
         // console.log(res.data['resp'])
         // console.log(this.convertData(res.data['resp']))
         let options = {
@@ -136,7 +136,7 @@ export default {
             }
           },
           series: [{
-            name: '标签1',
+            name: '入站访问来源统计',
             type: 'scatter',
             coordinateSystem: 'geo',
             symbolSize: function (val) {
@@ -156,8 +156,8 @@ export default {
                 borderWidth: 1
               }
             },
-            data: this.convertData(res.data['resp'])
-            // data: res.data
+            // data: this.convertData(res.data['resp'])
+            data: this.convertData(res.data)
           }/* , {
             name: '标签2',
             type: 'scatter',

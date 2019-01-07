@@ -156,9 +156,8 @@ export default {
         barWidth: 16,
         barGap: 0
       }]
-    })
+    });
     this.myinit()
   }
 }
-
 </script>

@@ -41,7 +41,7 @@
   <div class="dashboard">
     <div class="flex-container column">
       <div class="item one" @click="clickChart('1')" style="transform: translate(-28%,-37.5%) scale(0.25)">
-        <multipleColumn></multipleColumn>
+        <bar></bar>
       </div>
       <div class="item two" @click="clickChart('2')" style="transform: translate(-28%,-11.5%) scale(0.25)">
         <column1></column1>
@@ -66,6 +66,7 @@ import multipleColumn from 'src/components/multipleColumn/multipleColumn'
 import point from 'src/components/point/point'
 import parallel from 'src/components/parallel/parallel'
 import tree from 'src/components/tree/tree'
+import bar from 'src/components/bar/bar'
 
 export default {
   data () {
@@ -113,7 +114,8 @@ export default {
     point,
     'v-line': line,
     parallel,
-    tree
+    tree,
+    bar
   }
 }
 

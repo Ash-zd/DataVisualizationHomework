@@ -30,7 +30,7 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: 'CPU使用率',
+      name: '使用率',
       option: {},
       cpuData: []
     }
@@ -53,7 +53,7 @@ export default {
   },
   mounted () {
     setInterval(function () {
-      axios.get("http://localhost:8000/api/cpu/percent/").then((res) => {
+      axios.get("http://localhost:8000/api/cpumemory/info/").then((res) => {
         this.myChart = echarts.init(document.querySelector('.columnChart .main'), 'light');
         this.myChart.setOption({
           title: {
@@ -63,8 +63,7 @@ export default {
             trigger: 'axis'
           },
           legend: {
-            show: true,
-            data: ['CPU'],
+            show: false,
             textStyle: {
               color: 'white'
             }
@@ -72,7 +71,7 @@ export default {
           color: this.color,
           calculable: true,
           xAxis: [{
-            name: 'CPU',
+            name: '',
             type: 'category',
             axisLine: {
               show: false
@@ -88,7 +87,7 @@ export default {
                 color: 'white'
               }
             },
-            data: ['CPU1', 'CPU2', 'CPU3', 'CPU4', 'CPU5', 'CPU6', 'CPU7', 'CPU8']
+            data: res.data['name']
           }],
           yAxis: [{
             axisLine: {
@@ -122,7 +121,7 @@ export default {
           series: [{
             name: 'CPU',
             type: 'bar',
-            data: res.data['cpu_percent'],
+            data: res.data['percent'],
             barWidth: 50,
             barGap: 0,
             itemStyle: {

@@ -14,7 +14,6 @@
   <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
   <div class="main"></div>
 </div>
-
 </template>
 
 <script>
@@ -29,7 +28,7 @@ export default {
       legendArr: [],
       color: this.$store.state.color,
       myChart: {},
-      name: '网络IO',
+      name: 'IO监视',
       recv: [],
       sent: []
     }
@@ -51,12 +50,16 @@ export default {
     'v-filter': filter
   },
   mounted () {
-    let sentData = [];
-    let recvData = [];
+    let netSentData = [];
+    let netRecvData = [];
+    let diskWriteData = [];
+    let diskReadData = [];
     setInterval(function () {
-      axios.get('http://localhost:8000/api/net/io/').then((res) => {
-        sentData.push(res.data['sent']);
-        recvData.push(res.data['recv']);
+      axios.get('http://localhost:8000/api/netdisk/io/').then((res) => {
+        netSentData.push(res.data['net']['sent']);
+        netRecvData.push(res.data['net']['recv']);
+        diskWriteData.push(res.data['disk']['write']);
+        diskReadData.push(res.data['disk']['read']);
         this.myChart = echarts.init(document.querySelector('.line .main'), 'light');
         this.myChart.setOption({
           title: {
@@ -67,7 +70,7 @@ export default {
           },
           legend: {
             show: true,
-            data: ['入站流量', '出站流量'],
+            data: ['入站流量速率', '出站流量速率', '磁盘写入速率', '磁盘读取速率'],
             textStyle: {
               color: 'white'
             }
@@ -121,14 +124,24 @@ export default {
             }
           }],
           series: [{
-            name: '入站流量',
+            name: '入站流量速率',
             type: 'line',
-            data: recvData,
+            data: netRecvData,
             smooth: true
           }, {
-            name: '出站流量',
+            name: '出站流量速率',
             type: 'line',
-            data: sentData,
+            data: netSentData,
+            smooth: true
+          }, {
+            name: '磁盘写入速率',
+            type: 'line',
+            data: diskWriteData,
+            smooth: true
+          }, {
+            name: '磁盘读取速率',
+            type: 'line',
+            data: diskReadData,
             smooth: true
           }]
         });
